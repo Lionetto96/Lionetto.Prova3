@@ -92,6 +92,7 @@ namespace Prova3
                         
                         break;
                     case '6':
+                        //se inserisco la stessa canzone non mi dice che c'è già
                         Song s=InsertSong();
                         bool exist = CheckSong(s.Title);
                         if (exist)
@@ -107,6 +108,8 @@ namespace Prova3
                             }
                         }
 
+                        break;
+                    case '7':
                         break;
                     case 'Q':
                         break;
