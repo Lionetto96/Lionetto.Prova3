@@ -54,7 +54,7 @@ namespace Prova3.Repository
         public List<Episode> GetByDurata(Durata durata)
         {
             
-            //List<Podcast> pp = Fetch();
+            
             List<Episode> episodes = FetchEpisode();
             List<Episode> epi=new List<Episode>();
             foreach(var e in episodes)
