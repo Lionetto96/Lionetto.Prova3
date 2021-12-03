@@ -78,11 +78,17 @@ namespace Prova3
                     case '5':
                         Durata d = ChiediDurata();
                         List<Episode> list4=pod.GetByDurata(d);
-                        //List<Podcast> list5 = pod.Fetch();  // volevo prendere il titolo del podcast associato agli episodi 
-                        foreach (Episode episode in list4)
+                        List<Podcast> list5 = pod.Fetch();  
+                        foreach(var podcast in list5)
                         {
-                            episode.PrintInfo();
+                            foreach(var ep in list4)
+                            {
+                                Console.WriteLine($"podcast:{podcast.Title}, Episodi: episodio:{ep.Title} durata:{ep.Durata.Ore} {ep.Durata.Minuti} {ep.Durata.Secondi}");
+                            }
+                            
+
                         }
+                        
                         break;
                     case 'Q':
                         break;
