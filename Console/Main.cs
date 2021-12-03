@@ -83,12 +83,30 @@ namespace Prova3
                         {
                             foreach(var ep in list4)
                             {
+                                
                                 Console.WriteLine($"podcast:{podcast.Title}, Episodi: episodio:{ep.Title} durata:{ep.Durata.Ore} {ep.Durata.Minuti} {ep.Durata.Secondi}");
                             }
                             
 
                         }
                         
+                        break;
+                    case '6':
+                        Song s=InsertSong();
+                        bool exist = CheckSong(s.Title);
+                        if (exist)
+                        {
+                            Console.WriteLine("questa canzone è già presente nella playlist");
+                        }
+                        else
+                        {
+                            List<Song> myPlaylist = CreatePlaylist(s);
+                            foreach (var song in myPlaylist)
+                            {
+                                song.PrintInfo();
+                            }
+                        }
+
                         break;
                     case 'Q':
                         break;
@@ -129,6 +147,64 @@ namespace Prova3
             d.Secondi = sec;
 
             return d;
+        }
+        private static List<Song> CreatePlaylist(Song song)
+        {
+            List<Song> myPlaylist = new List<Song>();
+            myPlaylist.Add(song);
+            return myPlaylist;
+        }
+
+        private static Song InsertSong()
+        {
+            string title;
+            do
+            {
+                Console.WriteLine("inserisci titolo della canzone");
+                title = Console.ReadLine();
+            }while(string.IsNullOrEmpty(title));
+            string nome;
+            do
+            {
+                Console.WriteLine("inserisci nome autore");
+                nome = Console.ReadLine();
+            }while(string.IsNullOrEmpty(nome));
+            string cognome;
+            do
+            {
+                Console.WriteLine("inserisci cognome autore");
+                cognome = Console.ReadLine();
+            } while (string.IsNullOrEmpty(cognome));
+            int anno;
+            do
+            {
+                Console.WriteLine("inserisci anno di nascita dell'autore");
+                
+            }while(!int.TryParse(Console.ReadLine(),out anno));
+            string genere;
+            do
+            {
+                Console.WriteLine($"scegli genere:   {GenereEnum.Rock} \n {GenereEnum.Pop} \n {GenereEnum.Jazz}");
+
+                genere = Console.ReadLine();
+
+            } while (genere != "Rock" && genere != "Pop" && genere != "Jazz");
+            GenereEnum genereEnum = (GenereEnum)Enum.Parse(typeof(GenereEnum), genere);
+            Song s=new Song(title,new Author(nome,cognome,anno),genereEnum);
+            return s;
+        }
+        private static bool CheckSong(string  title)
+        {
+            List<Song> list = new List<Song>();
+            foreach (Song s2 in list)
+            {
+                if(s2.Title == title)
+                {
+                    return true;
+                }
+
+            }
+            return false;
         }
 
         

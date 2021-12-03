@@ -27,12 +27,12 @@ namespace Prova3.Entities
             Console.WriteLine($"titolo:{Title} autore:{Author.Name},{Author.LastName},{Author.YearBorn} descrizione:{Description}");
         }
 
-        //per stampare solo titolo ed episodi 
-        public void PrintInfo2()
-        {
-            Console.WriteLine($"titolo:{Title} ");
-            foreach(var episode in Episodes) { episode.PrintInfo(); }
-        }
+        ////per stampare solo titolo ed episodi, ma non l'ho usato 
+        //public void PrintInfo2()
+        //{
+        //    Console.WriteLine($"titolo:{Title} ");
+        //    foreach(var episode in Episodes) { episode.PrintInfo(); }
+        //}
 
     }
 }
